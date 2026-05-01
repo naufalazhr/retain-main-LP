@@ -4,6 +4,328 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RETAIN — AI Tools untuk Shopee Seller</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        /* ===== DESIGN TOKENS ===== */
+        :root {
+            /* Colors */
+            --orange: #EE4D2D;
+            --orange-dark: #d13f1f;
+            --orange-light: #ff7849;
+            --orange-bg: #fff1ec;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666;
+            --text-muted: #999;
+            --bg-white: #ffffff;
+            --bg-light: #f9f9f9;
+            --bg-hero: #fffaf7;
+            --border-light: #f1f1f1;
+            --green-accent: #22c55e;
+            --purple-accent: #a855f7;
+
+            /* Typography */
+            --font-family: 'Inter', system-ui, sans-serif;
+            --text-xs: 0.75rem;
+            --text-sm: 0.875rem;
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --text-2xl: 1.5rem;
+            --text-3xl: 1.875rem;
+            --text-4xl: 2.25rem;
+            --text-5xl: 3rem;
+            --text-hero: 3.5rem;
+
+            /* Spacing */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            --space-3xl: 4rem;
+            --space-4xl: 6rem;
+
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 24px;
+            --radius-2xl: 28px;
+            --radius-full: 9999px;
+
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 12px 24px rgba(238, 77, 45, 0.1);
+            --shadow-xl: 0 25px 50px -20px rgba(238, 77, 45, 0.25);
+            --shadow-btn: 0 15px 35px -10px rgba(238, 77, 45, 0.5);
+
+            /* Transitions */
+            --transition-fast: 0.25s;
+            --transition-base: 0.3s;
+            --transition-slow: 0.35s;
+            --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        /* ===== BASE STYLES ===== */
+        * {
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-primary);
+            background: var(--bg-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== UTILITY CLASSES ===== */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-xl);
+        }
+
+        /* ===== ANIMATION KEYFRAMES ===== */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-18px) rotate(0.5deg); }
+        }
+
+        @keyframes pulseDot {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { box-shadow: 0 0 0 12px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+
+        @keyframes marquee {
+            to { transform: translateX(-50%); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== COMPONENT STYLES ===== */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 100%);
+            color: white;
+            border-radius: var(--radius-full);
+            padding: 18px 36px;
+            font-weight: 600;
+            font-size: var(--text-base);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: var(--shadow-btn);
+            transition: all var(--transition-fast);
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px -10px rgba(238, 77, 45, 0.6);
+        }
+
+        .btn-ghost {
+            border: 2px solid #e5e7eb;
+            border-radius: var(--radius-full);
+            padding: 16px 34px;
+            font-weight: 600;
+            font-size: var(--text-base);
+            transition: all var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-primary);
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+            transform: translateY(-2px);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: var(--radius-full);
+            background: var(--orange-bg);
+            color: var(--orange);
+            font-size: var(--text-sm);
+            font-weight: 600;
+            border: 1px solid rgba(238, 77, 45, 0.2);
+        }
+
+        .feature-card {
+            position: relative;
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-2xl);
+            padding: 32px;
+            transition: all var(--transition-slow) var(--ease-out);
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--orange);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(238, 77, 45, 0.06), transparent 60%);
+            opacity: 0;
+            transition: opacity var(--transition-slow);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .stat-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-2xl);
+            padding: 40px 30px;
+            border: 1px solid var(--border-light);
+            text-align: center;
+            transition: all var(--transition-base);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+            border-color: rgba(238, 77, 45, 0.3);
+        }
+
+        .faq-item {
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            transition: all var(--transition-base);
+        }
+
+        .faq-item:hover {
+            border-color: rgba(238, 77, 45, 0.4);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-slow) ease;
+        }
+
+        /* ===== SCROLL REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+        /* ===== BACKGROUND EFFECTS ===== */
+        .hero-bg {
+            background:
+                radial-gradient(circle at 15% 10%, rgba(238, 77, 45, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 90% 20%, rgba(255, 120, 73, 0.10) 0%, transparent 50%),
+                linear-gradient(180deg, var(--bg-hero) 0%, var(--bg-white) 100%);
+            position: relative;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--green-accent);
+            box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+            animation: pulseDot 2s infinite;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+            .feature-card, .stat-card, .btn-primary, .btn-ghost {
+                transition: none;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 var(--space-lg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --text-hero: 2rem;
+                --text-4xl: 1.75rem;
+                --text-3xl: 1.5rem;
+            }
+            .container {
+                padding: 0 var(--space-md);
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Content will be built in subsequent tasks -->
