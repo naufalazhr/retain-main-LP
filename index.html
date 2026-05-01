@@ -624,5 +624,61 @@
             </div>
         </div>
     </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#1a1a1a] text-white py-12">
+        <div class="container">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <!-- Brand -->
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">R</span>
+                    </div>
+                    <span class="text-xl font-bold">RETAIN</span>
+                </div>
+
+                <!-- Links -->
+                <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="https://roaslab.retain.co.id" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">ROASlab</a>
+                    <a href="https://chatback.retain.co.id" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Chatback</a>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-500">
+                &copy; <span id="year"></span> RETAIN. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Dynamic year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-xmark');
+            });
+        }
+
+        // Close mobile menu on link click
+        mobileMenu?.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                const icon = mobileMenuBtn?.querySelector('i');
+                icon?.classList.add('fa-bars');
+                icon?.classList.remove('fa-xmark');
+            });
+        });
+    </script>
 </body>
 </html>
