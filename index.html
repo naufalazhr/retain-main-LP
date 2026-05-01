@@ -328,6 +328,48 @@
     </style>
 </head>
 <body>
-    <!-- Content will be built in subsequent tasks -->
+    <!-- NAVBAR -->
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="container">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2">
+                    <div class="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">R</span>
+                    </div>
+                    <span class="text-xl font-bold text-gray-900">RETAIN</span>
+                </a>
+
+                <!-- Nav Links (Desktop) -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#produk" class="text-gray-600 hover:text-[var(--orange)] transition-colors font-medium">Produk</a>
+                    <a href="#tentang" class="text-gray-600 hover:text-[var(--orange)] transition-colors font-medium">Tentang</a>
+                    <a href="#faq" class="text-gray-600 hover:text-[var(--orange)] transition-colors font-medium">FAQ</a>
+                </div>
+
+                <!-- CTA Button -->
+                <a href="#cta" class="hidden md:inline-flex btn-primary text-sm !py-3 !px-6">
+                    Join Waitlist
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-gray-600 hover:text-[var(--orange)]" id="mobile-menu-btn">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="hidden md:hidden pb-4" id="mobile-menu">
+                <div class="flex flex-col gap-3">
+                    <a href="#produk" class="text-gray-600 hover:text-[var(--orange)] transition-colors font-medium py-2">Produk</a>
+                    <a href="#tentang" class="text-gray-600 hover:text-[var(--orange)] transition-colors font-medium py-2">Tentang</a>
+                    <a href="#faq" class="text-gray-600 hover:text-[var(--orange)] transition-colors font-medium py-2">FAQ</a>
+                    <a href="#cta" class="btn-primary text-center text-sm !py-3 !px-6 mt-2">Join Waitlist</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content sections will be added in subsequent tasks -->
 </body>
 </html>
