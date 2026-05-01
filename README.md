@@ -1,6 +1,6 @@
 # RETAIN Main Landing Page
 
-Main landing page for retain.co.id — umbrella brand for ROASlab and Chatback products.
+Main landing page for retain.co.id/home — umbrella brand for ROASlab and Chatback products.
 
 ## Products
 - **ROASlab**: AI ads decision tool for Shopee sellers → [roaslab.retain.co.id](https://roaslab.retain.co.id)
@@ -29,7 +29,7 @@ This project is deployed via Cloudflare Workers & Pages with automated GitHub pi
    - Framework preset: **None**
    - Build command: *(leave empty)*
    - Build output directory: `.`
-4. Set custom domain: `retain.co.id` in Cloudflare dashboard → Custom domains
+4. Set custom domain route: `retain.co.id/home` in Cloudflare dashboard → Workers Routes
 
 #### Manual Deploy (via Wrangler CLI)
 ```bash
